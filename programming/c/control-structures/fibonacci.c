@@ -6,13 +6,13 @@ int main(int argc, char *argv[])
 
     // initialize variables and write the while loop
 
-	f_1 = 0;
+	f_1 = 1;
 	f_2 = 1;
 	printf("%d\n%d\n", f_1, f_2);
 	f_n = f_1 + f_2;
 
 	while (f_n<100) {
-	printf("%d\n%d\n", f_n);
+	printf("%d \n", f_n);
 	f_1 = f_2; 
 	f_2 = f_n;
 	f_n = f_1 + f_2; }
