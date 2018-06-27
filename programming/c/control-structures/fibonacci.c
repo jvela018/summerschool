@@ -2,10 +2,20 @@
 
 int main(int argc, char *argv[])
 {
-    int f0, f1, f2;
+    int f_n, f_1, f_2;
 
     // initialize variables and write the while loop
-    // Remember to update all variables within the loop
+
+	f_1 = 0;
+	f_2 = 1;
+	printf("%d\n%d\n", f_1, f_2);
+	f_n = f_1 + f_2;
+
+	while (f_n<100) {
+	printf("%d\n%d\n", f_n);
+	f_1 = f_2; 
+	f_2 = f_n;
+	f_n = f_1 + f_2; }
 
     return 0;
 }
