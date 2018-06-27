@@ -15,7 +15,10 @@ int main(void)
 
     /* Add here a for loop that at each iteration prints out
        the current value of the power and updates val */
-#error Add the missing loop
+	for (n = 0; n <= N; n++) {
+        printf("\t %2d  \t  %5d\n", n, val);
+        val = val * k;
+    }
 
     return 0;
 }
