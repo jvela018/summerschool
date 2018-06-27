@@ -1,6 +1,8 @@
+ifeq ($(COMP),)
 COMP=cray
+endif
 
-COMMONDIR=../../common
+COMMONDIR=../../../common
 LIBPNGDIR=/appl/opt/libpng
 
 ifeq ($(COMP),cray)

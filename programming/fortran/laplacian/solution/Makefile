@@ -1,4 +1,6 @@
-COMP=cray
+ifeq ($(COMP),)
+COMP=gnu
+endif
 
 ifeq ($(COMP),cray)
 CC=cc
@@ -23,7 +25,7 @@ OBJ=laplacian.o
 
 all: $(EXE)
 
-loops.o: laplacian.F90
+arrays.o: laplacian.F90
 
 $(EXE): $(OBJ)
 	$(FC) $(FCFLAGS) $(OBJ) -o $@ 
@@ -35,4 +37,4 @@ $(EXE): $(OBJ)
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:
-	-/bin/rm -f $(EXE)  a.out *.o *.mod *.png *~
+	-/bin/rm -f $(EXE)  *.o *.mod  *~

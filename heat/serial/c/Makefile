@@ -1,6 +1,14 @@
+ifeq ($(COMP),)
 COMP=cray
+endif
 
-COMMONDIR=../../common
+COMMONDIR=$(shell \
+  if test -d '../../common'; then \
+    echo '../../common/'; \
+  elif test -d '../../../common'; then \
+    echo '../../../common/'; \
+  fi; \
+)
 
 ifeq ($(COMP),cray)
 CC=cc
