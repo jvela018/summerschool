@@ -21,7 +21,7 @@ if(rank==0){
  printf("\n");
 }
 
-//MPI_Finalize();
+MPI_Finalize();
 
 return 0;
 }
