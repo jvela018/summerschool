@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-    int i, myid, ntasks;
+    int i, myid, ntasks, count, dest,source,tag;
     int size = 10000000;
     int *message;
     int *receiveBuffer;
@@ -29,7 +29,23 @@ int main(int argc, char *argv[])
     t0 = MPI_Wtime();
 
     /* TODO start */
-    /* Send and receive messages as defined in exercise */
+    /* Send and receive messages as defined in exercise */ 
+    
+    //tag = 10;
+    count = size;
+    dest = myid+1;
+    source = myid-1;
+ 
+    if(myid < ntasks - 1){
+
+      	MPI_Send(message, count, MPI_INT, dest, myid+1, MPI_COMM_WORLD);
+    }
+    
+    if (myid > 0) {
+	MPI_Recv(receiveBuffer, count, MPI_INT,source,myid, MPI_COMM_WORLD, &status);
+    }
+    	
+    
     if (myid < ntasks - 1) {
         printf("Sender: %d. Sent elements: %d. Tag: %d. Receiver: %d\n",
                myid, size, myid + 1, myid + 1);

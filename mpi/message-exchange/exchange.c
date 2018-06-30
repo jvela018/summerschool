@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     /* TODO: */
     /* Send and receive messages as defined in exercise */
-    count = sizeof(&message);
+    count = size;
     dest = ntasks-1;
     source = 0; 
     

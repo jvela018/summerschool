@@ -6,13 +6,22 @@
 #define NY 258
 
 #define DX 0.01
-#define DY 0.01
+#define DY 0.01 
+
+struct field {
+   int   nx, ny;
+   float dx, dy;
+   float dx2, dy2;
+   float temp[NX][NY];
+};
 
 int main(void)
 {
     int i, j, error_code;
     double array[NX][NY];
     double laplacian[NX][NY];
+    struct field f;   
+   
 
     // First initalize the inner values to zero
     for (i = 1; i < NX - 2; i++) {
@@ -20,6 +29,14 @@ int main(void)
             array[i][j] = 0.0;
         }
     }
+
+    //Initialize temperature field array
+    for (i = 1; i < NX - 2; i++) {
+        for (j = 1; j < NY - 2; j++) {
+            f.temp[i][j] = 0.0;
+        }
+    }
+
 
     // Zero out the outer boundary of laplacian
     for (i = 0; i < NX; i++) {
@@ -41,11 +58,19 @@ int main(void)
     }
 
     // Evaluate the Laplacian
-    // *INDENT-OFF*
-#error Add the missing part
+    for (i = 1; i < NX - 2; i++) {
+        for (j = 1; j < NY - 2; j++) {
+           laplacian[i][j] =
+          	      	    (array[i-1][ j ] - 2.0 * array[i][j] + array[i+1][ j ]) / (DX * DX) +
+                	    (array[ i ][j-1] - 2.0 * array[i][j] + array[ i ][j+1]) / (DY * DY);
+	    printf("%f \t",laplacian[i][j]);
+         }
+        printf("\n ");
+    }
+
 
     // *INDENT-ON*
-
+/*
     // Call the png writer routine
     error_code = save_png((double *) laplacian, NX, NY, "datastructures_functions_heat-a_b.png", 'c');
 
@@ -54,6 +79,6 @@ int main(void)
     } else {
         printf("Error while writing output file datastructures_functions_heat-a_b.png\n");
     }
-
+*/
     return 0;
 }

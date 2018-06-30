@@ -42,6 +42,7 @@ void read_input(double image_buffer[][NY_MAX], char *filename)
     }
     // Read the header
 #error Add fscanf to read the dimensions of the array
+	//fscanf()
 
     // Read the actual data
 #error Add the loop where you read in the array into image_buffer
