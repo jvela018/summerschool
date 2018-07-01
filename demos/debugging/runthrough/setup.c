@@ -87,8 +87,8 @@ void generate_field(field *temperature)
 
     /* Radius of the source disc */
     radius = temperature->nx / 6.0;
-    for (i = 0; i < temperature->nx + 2; i++) {
-        for (j = 0; j < temperature->ny + 2; j++) {
+    for (i = 1; i < temperature->nx + 2; i++) {
+        for (j = 1; j < temperature->ny + 2; j++) {
             /* Distances of point i, j from the origin */
             dx = i - temperature->nx / 2 + 1;
             dy = j - temperature->ny / 2 + 1;

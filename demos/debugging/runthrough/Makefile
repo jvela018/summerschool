@@ -13,7 +13,7 @@ endif
 
 ifeq ($(COMP),gnu)
 CC=gcc
-CCFLAGS=-O3 -Wall -I$(COMMONDIR)
+CCFLAGS=-O3 -g -Og -Wall -I$(COMMONDIR)
 LDFLAGS=
 LIBS=-lpng
 endif

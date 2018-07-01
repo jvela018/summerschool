@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
     int ntasks, rank, color;
     int sendbuf[2 * NTASKS], recvbuf[2 * NTASKS];
     int printbuf[2 * NTASKS * NTASKS];
+    int size = 2*NTASKS;
 
     MPI_Comm sub_comm;
 
@@ -36,9 +37,13 @@ int main(int argc, char *argv[])
     /* TODO: use a single collective communication call (and maybe prepare
      *       some parameters for the call) */
 
+    int root = 0;
+    MPI_Bcast(sendbuf, size, MPI_INT, root, MPI_COMM_WORLD);
+   
+
     /* Print data that was received */
     /* TODO: add correct buffer */
-    print_buffers(printbuf, ..., 2 * NTASKS);
+    print_buffers(printbuf, sendbuf, 2 * NTASKS);
 
     MPI_Finalize();
     return 0;
